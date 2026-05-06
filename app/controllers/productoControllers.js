@@ -1,4 +1,4 @@
-const db = require('../config/db.js');
+const db = require('../config/db.config.js');
 const { Op } = require('sequelize');
 const Producto  = db.Producto;
 const Categoria = db.Categoria;

@@ -5,6 +5,11 @@ const db = require('./config/db.config.js'); // Quité el /app/ porque ya estás
 const router = require("./routers/router.js"); // Quité el /app/ porque ya estás dentro
 const errorHandler = require("./middlewares/errorHandler");
 
+// Rutas de Dev1 (Categorías y Productos) — se montan aquí porque el resto de
+// rutas viven en router.js. Las rutas de Dev2/Dev3/Dev4 ya están en router.js.
+const categoriaRoutes = require('./routers/categoriaRoutes.js');
+const productoRoutes  = require('./routers/productoRoutes.js');
+
 const app = express();
 
 // --- Configuración de Middlewares ---
@@ -27,6 +32,8 @@ db.sequelize.authenticate()
   });
 
 // --- Rutas ---
+app.use('/api/categorias', categoriaRoutes);
+app.use('/api/productos',  productoRoutes);
 app.use('/', router);
 
 app.get("/", (req, res) => {

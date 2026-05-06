@@ -1,4 +1,4 @@
-const db = require('../config/db.js');
+const db = require('../config/db.config.js');
 const Categoria = db.Categoria;
 
 const hoy = () => new Date().toISOString().split('T')[0];

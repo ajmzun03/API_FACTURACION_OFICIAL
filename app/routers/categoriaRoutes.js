@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const ctrl    = require('../controllers/categoria.controller.js');
+const ctrl    = require('../controllers/categoriaController.js');
 
 // GET    /api/categorias
 router.get('/', ctrl.getAll);
