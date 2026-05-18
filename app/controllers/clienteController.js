@@ -40,16 +40,38 @@ const obtenerClientes = async (req, res) => {
 };
 
 const obtenerClientePorDpi = async (req, res) => {
-  const { dpi } = req.params;
+
+  // Buscar el DPI desde params o body
+  const dpi =
+    req.body.dpi_cliente; //aquí se indica que es valido para la API
+
+  // Validar si viene vacío
+  if (!dpi) {
+    return res.status(400).json({
+      message:
+        'Debe enviar un DPI válido (dpi_cliente)'
+    });
+  }
 
   try {
+
     const cliente = await db.Cliente.findByPk(dpi);
+
     if (!cliente) {
-      return res.status(404).json({ message: 'Cliente no encontrado' });
+      return res.status(404).json({
+        message: `Cliente no encontrado con DPI: ${dpi}`
+      });
     }
+
     res.json(cliente);
+
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener cliente', error: error.message });
+
+    res.status(500).json({
+      message: 'Error al obtener cliente',
+      error: error.message
+    });
+
   }
 };
 

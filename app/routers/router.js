@@ -23,7 +23,7 @@ router.post('/auth/login', authController.login);
 // ============================================================
 // ROLES (solo ADMIN para escritura)
 // ============================================================
-router.post('/roles',       verifyToken, isAdmin, rolController.crearRol);
+router.post('/roles',       verifyToken, isAdmin, rolController.crearRol); //Aquí se quitan temporalmente verifyToken + isAdmin para crear un rol (Volver a colocarlo cuando se cree un primer rol)
 router.get('/roles',        verifyToken, rolController.obtenerRoles);
 router.get('/roles/:id',    verifyToken, rolController.obtenerRolPorId);
 router.put('/roles/:id',    verifyToken, isAdmin, rolController.actualizarRol);
@@ -32,7 +32,7 @@ router.delete('/roles/:id', verifyToken, isAdmin, rolController.eliminarRol);
 // ============================================================
 // USUARIOS (solo ADMIN)
 // ============================================================
-router.post('/usuarios',         verifyToken, isAdmin, usuarioController.crearUsuario);
+router.post('/usuarios',         verifyToken, isAdmin, usuarioController.crearUsuario); //Aquí se quita temporalmente verifyToken + isAdmin, para crear un usuario (Volver a colocarlo cuando se cree un primer rol)
 router.get('/usuarios',          verifyToken, isAdmin, usuarioController.obtenerUsuarios);
 router.get('/usuarios/:dpi',     verifyToken, isAdmin, usuarioController.obtenerUsuarioPorDpi);
 router.put('/usuarios/:dpi',     verifyToken, isAdmin, usuarioController.actualizarUsuario);
